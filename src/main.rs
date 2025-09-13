@@ -53,4 +53,26 @@ fn main() {
     let int_input: i64 = input2.trim().parse().expect("Please enter a valid number");
     let float_input: f64 = int_input as f64;
     println!("You entered integer: {}, which is float: {}", int_input, float_input);
+
+    // Boolean operations
+    let bool1 = 2<3;
+    let bool2 = 5==5;
+    let bool3 = 7>10;
+    let bool4 = (2 as f64) < 3.5;
+    println!("2 < 3: {}", bool1);
+    println!("5 == 5: {}", bool2);
+    println!("7 > 10: {}", bool3);
+    println!("2.0 < 3.5: {}", bool4);
+
+    // Control Flow
+    let mut number = String::new();
+    println!("Enter a number to check if it's even or odd:");
+    io::stdin().read_line(&mut number).expect("Failed to read line");
+    let number: i32 = number.trim().parse().expect("Please enter a valid number");
+    if number % 2 == 0 {
+        println!("{} is even.", number);
+    } else {
+        println!("{} is odd.", number);
+    }
+
 }
