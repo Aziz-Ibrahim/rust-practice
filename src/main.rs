@@ -38,5 +38,11 @@ fn main() {
     println!("{} / {} = {}", c, d, c / d);  
     println!("{} % {} = {}", c, d, c % d);
 
-
+    // Type Casting
+    let int_num: i32 = 10;
+    let float_num: f64 = int_num as f64;
+    println!("Integer: {}, Float: {}", int_num, float_num);
+    let float_num2: f64 = 9.7;
+    let int_num2: i32 = float_num2 as i32;
+    println!("Float: {}, Integer: {}", float_num2, int_num2);
 }
