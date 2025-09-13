@@ -45,4 +45,12 @@ fn main() {
     let float_num2: f64 = 9.7;
     let int_num2: i32 = float_num2 as i32;
     println!("Float: {}, Integer: {}", float_num2, int_num2);
+
+    // Type casting with user input
+    println!("Enter an integer to convert to float:");
+    let mut input2 = String::new();
+    io::stdin().read_line(&mut input2).expect("Failed to read line");
+    let int_input: i64 = input2.trim().parse().expect("Please enter a valid number");
+    let float_input: f64 = int_input as f64;
+    println!("You entered integer: {}, which is float: {}", int_input, float_input);
 }
