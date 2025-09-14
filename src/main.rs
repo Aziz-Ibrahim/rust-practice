@@ -14,6 +14,7 @@ fn main() {
     const SECONDS_IN_A_DAY: u32 = SECONDS_IN_A_MINUTE * MINUTES_IN_AN_HOUR * HOURS_IN_A_DAY;
     println!("There are {} seconds in a day.", SECONDS_IN_A_DAY);
 
+
     // Input and Output
     let mut input = String::new();
     println!("Enter a number:");
@@ -21,6 +22,7 @@ fn main() {
     let num: i32 = input.trim().parse().expect("Please enter a valid number");
     let squared = num * num;
     println!("The square of {} is {}", num, squared);
+
 
     // Arithmetic Operations
     // Integer operations
@@ -38,6 +40,7 @@ fn main() {
     println!("{} / {} = {}", c, d, c / d);  
     println!("{} % {} = {}", c, d, c % d);
 
+
     // Type Casting
     let int_num: i32 = 10;
     let float_num: f64 = int_num as f64;
@@ -50,9 +53,14 @@ fn main() {
     println!("Enter an integer to convert to float:");
     let mut input2 = String::new();
     io::stdin().read_line(&mut input2).expect("Failed to read line");
-    let int_input: i64 = input2.trim().parse().expect("Please enter a valid number");
+    let int_input: i64 = input2.trim().parse().expect(
+        "Please enter a valid number"
+    );
     let float_input: f64 = int_input as f64;
-    println!("You entered integer: {}, which is float: {}", int_input, float_input);
+    println!(
+        "You entered integer: {}, which is float: {}",
+        int_input, float_input
+    );
 
     // Boolean operations
     let bool1 = 2<3;
@@ -68,11 +76,65 @@ fn main() {
     let mut number = String::new();
     println!("Enter a number to check if it's even or odd:");
     io::stdin().read_line(&mut number).expect("Failed to read line");
-    let number: i32 = number.trim().parse().expect("Please enter a valid number");
+    let number: i32 = number.trim().parse().expect(
+        "Please enter a valid number"
+    );
     if number % 2 == 0 {
         println!("{} is even.", number);
     } else {
         println!("{} is odd.", number);
     }
+
+    // More complex condition
+    println!("Enter your age:");
+    let mut age_input = String::new();
+    io::stdin().read_line(&mut age_input).expect("Failed to read line");
+    let age: u32 = age_input.trim().parse().expect(
+        "Please enter a valid number"
+    );
+    if age < 13 {
+        println!("You are a child.");
+    } else if age < 20 {
+        println!("You are a teenager.");
+    } else if age < 65 {
+        println!("You are an adult.");
+    } else {
+        println!("You are a senior.");
+    }
+
+
+    // Functions
+    fn greet(name: &str) {
+        println!("Hello, {}!", name);
+    }
+    greet("Alice");
+    greet("Bob");
+
+    fn add(a: i32, b: i32) -> i32 {
+        a + b
+    }
+    let sum = add(5, 7);
+    println!("The sum of 5 and 7 is {}", sum);
+
+    // Nested functions
+    fn outer_function(x: i32) -> i32 {
+        fn inner_function(y: i32) -> i32 {
+            y + 2
+        }
+        inner_function(x) * 2
+    }
+    let result = outer_function(3);
+    println!("The result of the nested function is {}", result);
+
+
+    // Expression vs Statement
+    let expr = {let x = 3; x + 1}; // expression
+    println!("The value of the expression is {}", expr);
+
+    let stmt = {
+        let y = 5; println!("This is a statement, y is {}", y);
+    }; // statement
+    stmt; // executing the statement block
+
 
 }
