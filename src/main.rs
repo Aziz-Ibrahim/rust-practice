@@ -136,5 +136,131 @@ fn main() {
     }; // statement
     stmt; // executing the statement block
 
+    // Memory management
+    let s1 = String::from("hello");
+    let s2 = s1; // s1 is moved to s2
+    // println!("{}", s1); // This would cause a compile-time error
+    println!("{}", s2);
 
+    let s3 = String::from("world");
+    let s4 = s3.clone(); // s3 is cloned to s4
+    println!("s3 = {}, s4 = {}", s3, s4);
+
+    let num1 = 10;
+    let num2 = num1; // num1 is copied to num2
+    println!("num1 = {}, num2 = {}", num1, num2);
+
+    // Ownership with functions
+    fn take_ownership(s: String) {
+        println!("Taking ownership of: {}", s);
+    }
+    let s = String::from("ownership");
+    take_ownership(s);
+    // println!("{}", s); // This would cause a compile-time error
+    let num3 = 20;
+    fn make_copy(n: i32) {
+        println!("Making a copy of: {}", n);
+    }
+    make_copy(num3);
+    println!("num3 = {}", num3); // num3 is still valid
+
+    // Stack vs Heap
+    let stack_var = 42; // stored on the stack
+    let heap_var = String::from("Hello, heap!"); // stored on the heap
+    println!("Stack variable: {}", stack_var);
+    println!("Heap variable: {}", heap_var);
+
+    // Slices
+    let arr = [1, 2, 3, 4, 5];
+    let slice = &arr[1..4]; // slice of the array
+    println!("Array slice: {:?}", slice);
+
+    let string = String::from("Hello, world!");
+    let string_slice = &string[0..5]; // slice of the string
+    println!("String slice: {}", string_slice);
+
+    // Tuples
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    let (x, y, z) = tup;
+    println!("The value of x is: {}", x);
+    println!("The value of y is: {}", y);   
+    println!("The first element of the tuple is: {}", tup.0);
+    println!("The second element of the tuple is: {}", tup.1);
+    println!("The third element of the tuple is: {}", tup.2);
+
+    // Arrays
+    let arr1 = [1, 2, 3, 4, 5];
+    let arr2: [i32; 5] = [1, 2, 3, 4, 5];
+    let arr3 = [3; 5];
+    println!("arr1: {:?}", arr1);
+    println!("arr2: {:?}", arr2);
+    println!("arr3: {:?}", arr3);
+    println!("The first element of arr1 is: {}", arr1[0]);
+    println!("The length of arr1 is: {}", arr1.len());
+
+    // Loops
+    for i in 1..6 {
+        println!("For loop iteration: {}", i);
+    }
+    let mut count = 0;
+    while count < 5 {
+        println!("While loop count: {}", count);
+        count += 1;
+    }
+
+    let mut n = 0;
+    loop {
+        n += 1;
+        println!("Loop iteration: {}", n);
+        if n >= 5 {
+            break;
+        }
+    }
+
+    // Pattern Matching
+    let number = 3;
+    match number {
+        1 => println!("One"),
+        2 => println!("Two"),
+        3 => println!("Three"),
+        _ => println!("Something else"),
+    }
+
+    let boolean = true;
+    let binary = match boolean {
+        true => 1,
+        false => 0,
+    };
+    println!("The value of binary is: {}", binary);
+
+    // Error Handling
+    fn divide(a: f64, b: f64) -> Result<f64, String> {
+        if b == 0.0 {
+            Err(String::from("Cannot divide by zero"))
+        } else {
+            Ok(a / b)
+        }
+    }
+    match divide(10.0, 2.0) {
+        Ok(result) => println!("Result: {}", result),
+        Err(e) => println!("Error: {}", e),
+    }
+    match divide(10.0, 0.0) {
+        Ok(result) => println!("Result: {}", result),
+        Err(e) => println!("Error: {}", e),
+    }
+
+    // Vectors
+    let mut vec = Vec::new();
+    vec.push(1);
+    vec.push(2);
+    vec.push(3);
+    println!("Vector: {:?}", vec);
+    println!("First element: {}", vec[0]);
+    println!("Vector length: {}", vec.len());
+    for i in &vec {
+        println!("Vector element: {}", i);
+    }
+    vec.pop();
+    println!("Vector after pop: {:?}", vec);
 }
